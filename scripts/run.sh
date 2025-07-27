@@ -1,8 +1,8 @@
 #!/bin/sh
 
 xrdb merge ~/.Xresources 
-xbacklight -set 10 &
-feh --bg-fill ~/Pictures/hotline_miami.png &
+brightnessctl s 75%
+feh --bg-fill ~/Pictures/Ivan_Shishkin_Winter.jpeg &
 ~/.local/src/dwm/scripts/keyboard.sh &
 picom &
 slstatus &
