@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 40;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=18" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -75,7 +75,7 @@ static const Key keys[] = {
 	/* modifier                     key                         function            argument */
 	{ MODKEY,                       XK_p,                       spawn,              {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,                  spawn,              {.v = termcmd } },
-  { MODKEY,                       XK_w,                       spawn,              SHCMD("~/scripts/wallpaper_menu.sh")},
+  { MODKEY,                       XK_w,                       spawn,              SHCMD("~/.scripts/wallpaper_menu.sh")},
   { MODKEY,                       XK_q,                       quit,               {0} },
 	{ MODKEY|ShiftMask,             XK_q,                       spawn,              SHCMD("killall dwm") },
 	{ 0,                            XK_Print,                   spawn,              SHCMD("flameshot gui") },
