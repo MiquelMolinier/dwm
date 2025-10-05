@@ -39,11 +39,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class              instance          title         tags mask     isfloating   monitor */
-  {  "Brave-browser",   NULL,             "Bitwarden",  0,            1,           -1 },
-  { "Brave-browser",    "brave-browser",  NULL,         1 << 1,       0,           -1 },
-  { "Zotero",           NULL,             NULL,         1 << 2,       0,           -1 },
-  { "obsidian",         NULL,             NULL,         1 << 3,       0,           -1 },
+	/* class              instance          title                         tags mask       isfloating   monitor */
+  {  "Brave-browser",   NULL,             "Bitwarden",                  0,              1,           -1 },
+  // {  NULL,              NULL,             "flameshot-pin",              (1 << 10) - 1,  1,           -1 },
+  {  NULL,              NULL,             "flameshot-pin",              0,              1,           -1 },
+  { "Brave-browser",    "brave-browser",  NULL,                         1 << 1,         0,           -1 },
+  { "Zotero",           NULL,             NULL,                         1 << 2,         0,           -1 },
+  { "obsidian",         NULL,             NULL,                         1 << 3,         0,           -1 },
+  { "Anki",             NULL,             NULL,                         1 << 4,         0,           -1 },
+  { NULL,               NULL,             "win11 on QEMU/KVM",          1 << 8,         0,           -1 },
+  // { NULL,               NULL,             "Virtual Machine Manager",    1 << 7,         0,           -1 },
+  // { "steam",            NULL,             NULL,                         0,              1,           -1 },
 };
 
 /* layout(s) */
@@ -84,9 +90,14 @@ static const Key keys[] = {
 	{ 0,                            XK_Print,                   spawn,              SHCMD("flameshot gui") },
 	{ 0,                            XF86XK_MonBrightnessUp,     spawn,              SHCMD("brightnessctl s 10+") },
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,              SHCMD("brightnessctl s 10-") },
+	{ MODKEY,                       XK_F10,                      spawn,              SHCMD("brightnessctl s 10-") },
+  { MODKEY,                       XK_F11,                      spawn,              SHCMD("brightnessctl s 10+") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,              SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,              SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{ MODKEY,                       XK_F2,                       spawn,              SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+	{ MODKEY,                       XK_F3,                       spawn,              SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
 	{ 0,                            XF86XK_AudioMute,           spawn,              SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ MODKEY,                       XK_F1,                       spawn,              SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ MODKEY,                       XK_v,                       spawn,              SHCMD("pactl set-default-sink $(~/.local/src/dwm/scripts/next_sink.sh)") },
 	{ MODKEY,                       XK_b,                       togglebar,          {0} },
 	{ MODKEY|ShiftMask,             XK_b,                       toggleextrabar,     {0} },
